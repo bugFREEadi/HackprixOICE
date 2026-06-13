@@ -11,7 +11,7 @@ import MagneticButton from '@/components/MagneticButton';
  */
 export default function FinalCTA() {
   return (
-    <section id="docs" data-testid={TID.finalCta} className="relative py-12 lg:py-16">
+    <section id="docs" data-testid={TID.finalCta} className="relative py-8 lg:py-10">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -35,7 +35,7 @@ export default function FinalCTA() {
             </svg>
           </div>
 
-          <div className="relative px-6 sm:px-10 lg:px-14 py-14 sm:py-16 lg:py-20 text-center">
+          <div className="relative px-6 sm:px-10 lg:px-14 py-12 sm:py-14 lg:py-16 text-center">
             <motion.div
               initial={{ opacity: 0, y: -8, rotate: -10 }}
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
