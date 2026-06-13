@@ -1,0 +1,44 @@
+{
+  "summary": "Iteration 3 frontend regression — 5/7 acceptance criteria fully PASS, 1 PARTIAL (FinalCTA outer height 739px vs target 480–620px — inner orange block 611px is in range), 1 FAIL (DNA graph wheel pass-through is broken). Page loads cleanly (0 console/page errors). MongoDB swap, isometric SVGs in Why Now cards, footer wordmark centering, all data-testids, mobile menu, hero CTAs and navigation all work correctly.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "DNAGraph / index.css .react-flow__pane override",
+        "issue": "Wheel scroll does NOT pass through to the page when hovering over the DNA graph background. Programmatic WheelEvent dispatched at center of [data-testid=hero-dna-graph] returns defaultPrevented:true, scrollY stays at 0. Root cause: pointer-events:none was added to .react-flow__pane only, but elementFromPoint at the graph center resolves to .react-flow__renderer (sibling under .react-flow), which still receives the wheel and react-flow's internal wheel handler calls preventDefault even with panOnScroll/zoomOnScroll disabled. Cursor regression PART (cursor:default) IS working — only wheel pass-through is broken.",
+        "selector": "[data-testid=hero-dna-graph] .react-flow__renderer",
+        "priority": "HIGH"
+      },
+      {
+        "component": "FinalCTA",
+        "issue": "Outer section bounding box height is 739.5px on 1920px viewport — above the target 480–620px range. Inner orange block is 611.5px (within range); outer padding py-12 lg:py-16 (~128px) pushes the section box past 620. Visually it is clearly more compact than the previous ~900px and looks good, but does not strictly satisfy the spec's outer-box range. Suggest reducing lg:py-16 → lg:py-10 or measuring only the inner block.",
+        "selector": "[data-testid=final-cta-section]",
+        "priority": "LOW"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix DNA graph wheel scroll pass-through: add `pointer-events: none` to `.react-flow, .react-flow__renderer, .react-flow__viewport` as well (keep `.react-flow__node { pointer-events: auto }`), OR attach an onWheel handler on the wrapper that re-dispatches the wheel to window. The current CSS targets only .react-flow__pane which is insufficient — the renderer captures wheel events.",
+    "(Optional) Tighten FinalCTA outer padding (py-12 lg:py-16 → py-10 lg:py-12) to bring the section box into the 480–620px target range."
+  ],
+  "critical_code_review_comments": [
+    "index.css: .react-flow__pane { pointer-events:none } alone does not prevent wheel capture because react-flow attaches its wheel listener to the renderer/wrapper. Need broader override or an explicit React handler in DNAGraph.jsx that calls e.stopPropagation() into window scroll.",
+    "Header.jsx: desktop nav-link-* testids (nav-link-about, nav-link-how, etc.) exist in DOM at mobile viewport but are hidden via Tailwind responsive classes; the mobile drawer renders a separate set of links without data-testids. Consider sharing testids across mobile drawer for easier testability."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "N/A (skipped per request)",
+    "frontend": "85% (6/7 acceptance criteria pass + DNA cursor fix works; only wheel pass-through and CTA outer-height range fail)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 3 verified the following passing: (1) 0 console/page errors on /, (2) tech-stack-marquee contains 'MongoDB' and no 'PostgreSQL', (3) Why Now: 3 force cards each containing 2 SVGs (the iso visual + lucide icon), force grid stable, (4) FinalCTA orange block + lightning + 3 CTAs (final-launch-app-btn nav to /app, final-run-simulation-btn, final-read-docs-link) all visible & clickable, headline 'Innovation deserves better infrastructure.' present, (5) site-footer renders 4 link columns and giant OICE wordmark — wordmark center within 0.01px of footer center, (6) DNA graph: 7 nodes + 9 edges rendered, .react-flow__pane cursor=default ✅, pointer-events=none ✅, BUT wheel scroll over the graph does NOT scroll the page (defaultPrevented:true on the renderer), (7) all data-testids from iter1/2 present: hero/header buttons, 4 pillars, how-step-1..7 (8 elements expected — only 7 exist, indices 1-7), 6 features, 6 stat counters, mobile-menu-toggle works at 390px. Re-test only the DNA wheel pass-through after the CSS/JS fix is applied.",
+  "rca of the issue": "DNA wheel pass-through failure RCA: (1) Reproduction: load /, scroll to hero, dispatch WheelEvent at center of [data-testid=hero-dna-graph]. (2) Root cause: pointer-events:none was applied ONLY to .react-flow__pane. The wheel handler that calls preventDefault is bound by reactflow to the renderer/wrapper element (.react-flow / .react-flow__renderer), which still has pointer-events:auto and intercepts the wheel before it bubbles to window. (3) Mitigation options: (a) extend CSS to `.react-flow, .react-flow__renderer, .react-flow__viewport { pointer-events:none } .react-flow__node { pointer-events:auto }` — simplest fix; (b) in DNAGraph.jsx, add `onWheel={(e) => { e.stopPropagation(); window.scrollBy(0, e.deltaY); }}` on the outer wrapper; (c) wrap ReactFlow in a div with style {pointerEvents:'none'} and override only on nodes."
+}

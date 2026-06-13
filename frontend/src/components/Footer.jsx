@@ -56,17 +56,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Giant wordmark */}
+        {/* Giant wordmark — centered */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="mt-20 select-none"
+          className="mt-20 select-none flex justify-center"
           aria-hidden
         >
-          <div className="font-display font-medium tracking-[-0.05em] text-[28vw] sm:text-[24vw] lg:text-[18vw] leading-none text-transparent bg-clip-text"
-               style={{ backgroundImage: 'linear-gradient(180deg, rgba(222,210,196,0.08), transparent)' }}>
+          <div
+            className="font-display font-medium tracking-[-0.05em] text-[28vw] sm:text-[24vw] lg:text-[18vw] leading-none text-transparent bg-clip-text text-center"
+            style={{ backgroundImage: 'linear-gradient(180deg, rgba(222,210,196,0.10), rgba(238,105,46,0.04) 60%, transparent)' }}
+          >
             OICE
           </div>
         </motion.div>

@@ -227,3 +227,102 @@ export function IsoExploded({ className = '' }) {
     </svg>
   );
 }
+
+
+/* ============ MINI ARCHITECTURE GRAPHICS for feature cards ============ */
+/* IsoArchAI — stacked layered cube (research/AI motif) */
+export function IsoArchAI({ className = '', accent = ORANGE }) {
+  return (
+    <svg viewBox="0 0 200 140" className={className} aria-hidden>
+      {/* 3 stacked diamonds */}
+      {[0, 1, 2].map((i) => {
+        const cy = 40 + i * 24;
+        return (
+          <g key={i}>
+            <motion.path
+              d={`M100 ${cy - 18} L150 ${cy} L100 ${cy + 18} L50 ${cy} Z`}
+              stroke={STROKE}
+              strokeOpacity={0.85 - i * 0.18}
+              strokeWidth="1"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.15 * i }}
+            />
+          </g>
+        );
+      })}
+      {/* connecting vertical line */}
+      <GuideLine x1="100" y1="20" x2="100" y2="130" delay={0.05} />
+      {/* accent dot on top diamond */}
+      <motion.circle cx="100" cy="40" r="3" fill={accent}
+        initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} />
+      <motion.circle cx="100" cy="88" r="1.6" fill="rgba(255,255,255,0.6)"
+        initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.95 }} />
+    </svg>
+  );
+}
+
+/* IsoArchNetwork — connected nodes mesh (blockchain motif) */
+export function IsoArchNetwork({ className = '', accent = ORANGE }) {
+  const nodes = [
+    [40, 70], [100, 30], [160, 70], [100, 110], [70, 50], [130, 90],
+  ];
+  const edges = [[0,1],[1,2],[2,5],[5,3],[3,0],[0,4],[4,1],[2,5],[3,4]];
+  return (
+    <svg viewBox="0 0 200 140" className={className} aria-hidden>
+      {/* edges */}
+      {edges.map(([a, b], i) => (
+        <motion.line key={i}
+          x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
+          stroke={STROKE} strokeOpacity="0.45" strokeWidth="0.9"
+          initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.1 + i * 0.06 }} />
+      ))}
+      {/* nodes */}
+      {nodes.map(([x, y], i) => (
+        <motion.circle key={i} cx={x} cy={y} r={i === 1 ? 4 : 2.6}
+          fill={i === 1 ? accent : '#ffffff'} fillOpacity={i === 1 ? 1 : 0.85}
+          initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.7 + i * 0.05, ease: 'backOut' }} />
+      ))}
+      {/* outer hexagonal ring */}
+      <motion.path d="M100 18 L172 58 L172 112 L100 132 L28 112 L28 58 Z"
+        stroke={STROKE_DIM} strokeWidth="0.8" fill="none" strokeDasharray="2 4"
+        initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.3, delay: 0.2 }} />
+    </svg>
+  );
+}
+
+/* IsoArchGlobe — concentric arcs + satellite (distributed innovation motif) */
+export function IsoArchGlobe({ className = '', accent = ORANGE }) {
+  return (
+    <svg viewBox="0 0 200 140" className={className} aria-hidden>
+      {/* horizontal latitude arcs */}
+      {[44, 60, 76, 92].map((cy, i) => (
+        <motion.ellipse key={i} cx="100" cy={cy} rx={56 - i * 4} ry={4 + i * 2}
+          stroke={STROKE} strokeOpacity={0.7 - i * 0.15} strokeWidth="0.9" fill="none"
+          initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.1, delay: 0.1 * i }} />
+      ))}
+      {/* meridian — full circle */}
+      <motion.circle cx="100" cy="70" r="50" stroke={STROKE} strokeOpacity="0.6" strokeWidth="1" fill="none"
+        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.4 }} />
+      {/* vertical meridian */}
+      <motion.ellipse cx="100" cy="70" rx="14" ry="50" stroke={STROKE} strokeOpacity="0.45" strokeWidth="0.9" fill="none"
+        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.2 }} />
+
+      {/* satellite */}
+      <motion.g
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1 }}
+      >
+        <motion.circle cx="160" cy="34" r="4" fill={accent}
+          initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.1, ease: 'backOut' }} />
+        <motion.path d="M100 70 Q 140 40, 160 34" stroke={accent} strokeOpacity="0.55" strokeWidth="0.9" strokeDasharray="2 3" fill="none"
+          initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.8 }} />
+      </motion.g>
+
+      {/* core dot */}
+      <motion.circle cx="100" cy="70" r="2.4" fill="#ffffff"
+        initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.7 }} />
+    </svg>
+  );
+}

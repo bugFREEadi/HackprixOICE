@@ -67,16 +67,16 @@ html, body {
 /* ===== Premium grid backgrounds (Linear / Stripe style) ===== */
 .bg-grid-premium {
     background-image:
-        linear-gradient(to right,  rgba(222,210,196,0.055) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(222,210,196,0.055) 1px, transparent 1px);
-    background-size: 72px 72px;
+        linear-gradient(to right,  rgba(222,210,196,0.085) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(222,210,196,0.085) 1px, transparent 1px);
+    background-size: 64px 64px;
     background-position: center top;
 }
 
 .bg-grid-fine {
     background-image:
-        linear-gradient(to right,  rgba(222,210,196,0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(222,210,196,0.04) 1px, transparent 1px);
+        linear-gradient(to right,  rgba(222,210,196,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(222,210,196,0.05) 1px, transparent 1px);
     background-size: 32px 32px;
 }
 
@@ -153,6 +153,13 @@ html, body {
 .react-flow__attribution { display: none !important; }
 .react-flow__node { background: transparent !important; border: none !important; padding: 0 !important; }
 .react-flow__edge-path { stroke-width: 1.2px !important; }
+/* Static showcase: no drag cursor + wheel events pass through to page */
+.react-flow,
+.react-flow__pane,
+.react-flow__renderer,
+.react-flow__viewport { cursor: default !important; }
+.react-flow__pane { pointer-events: none !important; }
+.react-flow__node { pointer-events: auto !important; }
 
 /* Dotted projection lines (isometric) */
 @keyframes dash-march {

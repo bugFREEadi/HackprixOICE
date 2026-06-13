@@ -2,7 +2,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { motion } from 'framer-motion';
 import {
-  SiReact, SiTypescript, SiTailwindcss, SiSolidity, SiPrisma, SiPostgresql,
+  SiReact, SiTypescript, SiTailwindcss, SiSolidity, SiPrisma, SiMongodb,
   SiIpfs, SiEthereum, SiGoogle, SiVercel
 } from 'react-icons/si';
 import { TID } from '@/constants/testIds';
@@ -15,7 +15,7 @@ const logos = [
   { Icon: SiSolidity, label: 'Solidity' },
   { Icon: SiEthereum, label: 'Base Sepolia' },
   { Icon: SiPrisma, label: 'Prisma' },
-  { Icon: SiPostgresql, label: 'PostgreSQL' },
+  { Icon: SiMongodb, label: 'MongoDB' },
   { Icon: SiIpfs, label: 'IPFS' },
   { Icon: SiVercel, label: 'Vercel' },
 ];

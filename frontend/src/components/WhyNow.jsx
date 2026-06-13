@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Network, Globe } from 'lucide-react';
 import { TID } from '@/constants/testIds';
-import { IsoCluster } from '@/components/IsometricVisual';
+import { IsoCluster, IsoArchAI, IsoArchNetwork, IsoArchGlobe } from '@/components/IsometricVisual';
 
 const forces = [
   {
@@ -10,18 +10,21 @@ const forces = [
     title: 'AI is finally structured enough to evaluate work',
     body: 'Not just generate it. Multi-dimensional scoring with reasoning has moved from research demo to production reality.',
     color: '#eb8299',
+    Visual: IsoArchAI,
   },
   {
     Icon: Network, label: 'Blockchain', num: '02',
     title: 'Blockchain is finally cheap enough for micro-transactions',
     body: 'L2s like Base make distributing rewards to ten contributors as natural as a Stripe payout — without draining wallets.',
     color: '#ee692e',
+    Visual: IsoArchNetwork,
   },
   {
     Icon: Globe, label: 'Innovation', num: '03',
     title: 'Innovation is finally distributed enough',
     body: 'No single company, DAO, or country owns the best ideas. Coordination — not capital — is the new bottleneck.',
     color: '#85be9d',
+    Visual: IsoArchGlobe,
   },
 ];
 
@@ -57,12 +60,12 @@ export default function WhyNow() {
           className="mt-16 w-full"
         >
           <div className="relative rounded-3xl border border-white/[0.08] bg-ink/60 overflow-hidden">
-            <div className="absolute inset-0 bg-grid-fine opacity-30" />
+            <div className="absolute inset-0 bg-grid-fine opacity-40" />
             <IsoCluster className="w-full h-[280px] md:h-[360px] relative" />
           </div>
         </motion.div>
 
-        {/* Force cards */}
+        {/* Force cards — each has its own isometric mini-architecture */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden">
           {forces.map((f, i) => (
             <motion.div
@@ -72,18 +75,28 @@ export default function WhyNow() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
               whileHover={{ y: -3 }}
-              className="group relative bg-ink/80 p-7 lg:p-8 transition-colors duration-500 hover:bg-ink/40"
+              className="group relative bg-ink/80 transition-colors duration-500 hover:bg-ink/40 overflow-hidden"
             >
-              <div className="flex items-start justify-between">
-                <div className="h-12 w-12 grid place-items-center rounded-xl border border-white/[0.08]"
-                     style={{ background: `${f.color}14`, color: f.color }}>
-                  <f.Icon size={22} strokeWidth={1.6} />
-                </div>
-                <span className="text-[10px] font-mono text-bone/30 tracking-[0.22em]">{f.num}</span>
+              {/* Mini isometric visual */}
+              <div className="relative h-[150px] border-b border-white/[0.06] overflow-hidden">
+                <div className="absolute inset-0 bg-grid-fine opacity-50" />
+                <div className="absolute inset-0 pointer-events-none"
+                     style={{ background: `radial-gradient(60% 80% at 50% 50%, ${f.color}14, transparent 70%)` }} />
+                <f.Visual className="absolute inset-0 m-auto w-[78%] h-full" accent={f.color} />
               </div>
-              <div className="mt-7 text-[10px] uppercase tracking-[0.22em] text-bone/45">{f.label}</div>
-              <h3 className="font-display mt-2 text-xl lg:text-[22px] tracking-tight text-white leading-snug">{f.title}</h3>
-              <p className="mt-3 text-bone/55 text-[14px] leading-relaxed">{f.body}</p>
+
+              <div className="relative p-7 lg:p-8">
+                <div className="flex items-start justify-between">
+                  <div className="h-11 w-11 grid place-items-center rounded-xl border border-white/[0.08]"
+                       style={{ background: `${f.color}14`, color: f.color }}>
+                    <f.Icon size={20} strokeWidth={1.6} />
+                  </div>
+                  <span className="text-[10px] font-mono text-bone/30 tracking-[0.22em]">{f.num}</span>
+                </div>
+                <div className="mt-6 text-[10px] uppercase tracking-[0.22em]" style={{ color: f.color }}>{f.label}</div>
+                <h3 className="font-display mt-2 text-xl lg:text-[22px] tracking-tight text-white leading-snug">{f.title}</h3>
+                <p className="mt-3 text-bone/55 text-[14px] leading-relaxed">{f.body}</p>
+              </div>
             </motion.div>
           ))}
         </div>
