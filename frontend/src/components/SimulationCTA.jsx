@@ -48,7 +48,7 @@ export default function SimulationCTA() {
                 className="group inline-flex items-center gap-2.5 rounded-full bg-orange text-ink text-[15px] font-semibold px-6 py-3.5 hover:bg-orange-soft transition-colors"
               >
                 <span className="h-7 w-7 grid place-items-center rounded-full bg-ink/20">
-                  <Play size={12} className="ml-0.5" fill="currentColor" />
+                  <Play size={12} className="ml-0.5 text-green" fill="currentColor" />
                 </span>
                 Run Simulation
               </MagneticButton>

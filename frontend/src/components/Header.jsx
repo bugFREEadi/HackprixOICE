@@ -42,6 +42,7 @@ export default function Header() {
               <div className="relative h-full w-full rounded-md bg-orange grid place-items-center">
                 <span className="font-display font-bold text-ink text-[14px]">O</span>
               </div>
+              <div className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-green ring-2 ring-ink" />
             </div>
             <span className="font-display text-[17px] font-semibold tracking-tight">OICE</span>
             <span className="hidden sm:inline-block ml-1 text-[10px] uppercase tracking-[0.18em] text-green font-medium border border-green/30 bg-green/[0.06] rounded-full px-2 py-0.5">beta</span>

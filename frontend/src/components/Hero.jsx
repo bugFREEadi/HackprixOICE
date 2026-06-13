@@ -12,23 +12,23 @@ const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transiti
 export default function Hero() {
   return (
     <section data-testid={TID.hero} className="relative pt-36 lg:pt-48 pb-20 lg:pb-28 overflow-hidden">
-      {/* Premium grid background — Linear / Stripe style */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-grid-hero mask-grid-v" />
+      {/* Premium grid background — contained to upper hero, fades top + bottom */}
+      <div className="absolute inset-x-0 top-0 z-0 h-[820px] pointer-events-none">
+        <div className="absolute inset-0 bg-grid-hero mask-grid-hero" />
         {/* warm radial glow — pushed below center so the grid stays the hero feature */}
-        <div className="absolute inset-x-0 bottom-0 h-[380px] mask-grid-radial pointer-events-none overflow-hidden">
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 h-[320px] w-[620px] rounded-full blur-[180px] bg-orange/[0.08] breathe" />
-          <div className="absolute left-[20%] bottom-[10%] h-[220px] w-[220px] rounded-full blur-[140px] bg-pink/[0.06] breathe" style={{ animationDelay: '-3s' }} />
-          <div className="absolute right-[20%] bottom-[12%] h-[220px] w-[220px] rounded-full blur-[120px] bg-green/[0.06] breathe" style={{ animationDelay: '-1.5s' }} />
+        <div className="absolute inset-x-0 bottom-0 h-[300px] mask-grid-radial overflow-hidden">
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 h-[260px] w-[600px] rounded-full blur-[170px] bg-orange/[0.08] breathe" />
+          <div className="absolute left-[20%] bottom-[10%] h-[200px] w-[200px] rounded-full blur-[140px] bg-pink/[0.05] breathe" style={{ animationDelay: '-3s' }} />
+          <div className="absolute right-[20%] bottom-[12%] h-[220px] w-[220px] rounded-full blur-[120px] bg-green/[0.08] breathe" style={{ animationDelay: '-1.5s' }} />
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-5xl mx-auto text-center">
-          <motion.div variants={item} className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-bone/80 backdrop-blur">
+          <motion.div variants={item} className="inline-flex items-center gap-2.5 rounded-full border border-green/25 bg-green/[0.06] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-green/90 backdrop-blur">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-orange opacity-60 animate-ping" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-orange" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green opacity-60 animate-ping" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green" />
             </span>
             Innovation Coordination Protocol
           </motion.div>
@@ -62,8 +62,8 @@ export default function Hero() {
             </MagneticButton>
             <MagneticButton as={Link} to="/simulation" data-testid={TID.heroDemoBtn}
               className="group inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/15 text-white text-[15px] font-medium px-6 py-3.5 backdrop-blur hover:bg-white/[0.08] hover:border-white/25 transition-colors">
-              <span className="h-6 w-6 grid place-items-center rounded-full bg-orange/15 border border-orange/40">
-                <Play size={11} className="text-orange ml-px" fill="currentColor" />
+              <span className="h-6 w-6 grid place-items-center rounded-full bg-green/15 border border-green/40">
+                <Play size={11} className="text-green ml-px" fill="currentColor" />
               </span>
               Watch 90-second demo
             </MagneticButton>

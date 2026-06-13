@@ -80,13 +80,27 @@ html, body {
     background-size: 32px 32px;
 }
 
-/* Hero-only stronger grid — clearly visible like Linear / MegaLLM */
+/* Hero-only stronger grid — clearly visible, smaller cells */
 .bg-grid-hero {
     background-image:
-        linear-gradient(to right,  rgba(255,255,255,0.28) 1.5px, transparent 1.5px),
-        linear-gradient(to bottom, rgba(255,255,255,0.28) 1.5px, transparent 1.5px);
-    background-size: 88px 88px;
+        linear-gradient(to right,  rgba(255,255,255,0.24) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.24) 1px, transparent 1px);
+    background-size: 56px 56px;
     background-position: center top;
+}
+
+/* Hero grid mask — fades top and bottom, contained */
+.mask-grid-hero {
+    mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 12%,
+        black 78%,
+        transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 12%,
+        black 78%,
+        transparent 100%);
 }
 
 /* Fade grid into darkness top & bottom */

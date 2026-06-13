@@ -67,7 +67,7 @@ export default function Footer() {
         >
           <div
             className="font-display font-medium tracking-[-0.05em] text-[28vw] sm:text-[24vw] lg:text-[18vw] leading-none text-transparent bg-clip-text text-center"
-            style={{ backgroundImage: 'linear-gradient(180deg, rgba(222,210,196,0.10), rgba(238,105,46,0.04) 60%, transparent)' }}
+            style={{ backgroundImage: 'linear-gradient(180deg, rgba(133,190,157,0.18), rgba(222,210,196,0.08) 35%, rgba(238,105,46,0.05) 70%, transparent)' }}
           >
             OICE
           </div>
