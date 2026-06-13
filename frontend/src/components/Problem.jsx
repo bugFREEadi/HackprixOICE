@@ -1,108 +1,139 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { SiGithub, SiNotion } from 'react-icons/si';
 import { Coins, Sparkles } from 'lucide-react';
 import { TID } from '@/constants/testIds';
 
 const silos = [
-  { Icon: SiGithub, title: 'GitHub', body: 'tracks code — but not the researcher who shaped the idea.', tint: 'from-zinc-300 to-zinc-500' },
-  { Icon: SiNotion, title: 'Notion', body: 'tracks docs — but not who validated the hypothesis.', tint: 'from-zinc-300 to-zinc-500' },
-  { Icon: Coins, title: 'DAOs', body: 'track funding — but not where the money actually went.', tint: 'from-yellow-300 to-orange-500' },
-  { Icon: Sparkles, title: 'AI tools', body: 'suggest ideas — but can\u2019t tell you who deserves credit.', tint: 'from-cyan-300 to-violet-500' },
+  { Icon: SiGithub,  title: 'GitHub',   tracks: 'tracks code',    miss: 'but not the researcher who shaped the idea.' },
+  { Icon: SiNotion,  title: 'Notion',   tracks: 'tracks docs',    miss: 'but not who validated the hypothesis.' },
+  { Icon: Coins,     title: 'DAOs',     tracks: 'track funding',  miss: 'but not where the money actually went.' },
+  { Icon: Sparkles,  title: 'AI tools', tracks: 'suggest ideas',  miss: 'but cannot tell you who deserves credit.' },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] } }),
-};
+/* Scroll-driven word reveal — dark gray to white */
+function RevealWord({ children, progress, range, color = '#ffffff', dimColor = '#3a3835', bold = false }) {
+  const c = useTransform(progress, range, [dimColor, color]);
+  return (
+    <motion.span style={{ color: c, fontWeight: bold ? 600 : 'inherit' }}>{children}</motion.span>
+  );
+}
+
+const headlineWords = [
+  { t: '$2.7 trillion', b: true },
+  { t: 'is spent on global R&D every year.', b: false },
+  { t: 'Most of it vanishes', b: false, br: true },
+  { t: 'into a', b: false },
+  { t: 'black hole.', b: true, accent: true },
+];
 
 export default function Problem() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 80%', 'end 50%'],
+  });
+
   return (
-    <section id="problem" data-testid={TID.problemSection} className="relative py-24 lg:py-36">
-      {/* Black hole glow */}
+    <section ref={ref} id="problem" data-testid={TID.problemSection} className="relative py-32 lg:py-44">
+      {/* warm subtle glow */}
       <div className="absolute inset-x-0 top-0 -z-10 h-[680px] overflow-hidden">
-        <div className="absolute left-1/2 -translate-x-1/2 top-32 h-[520px] w-[520px] rounded-full blur-[150px] bg-orange-600/12" />
-        <div className="absolute left-1/2 -translate-x-1/2 top-40 h-[360px] w-[360px] rounded-full blur-[120px] bg-rose-600/12" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-40 h-[520px] w-[520px] rounded-full blur-[160px] bg-orange/[0.08]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
-          className="max-w-4xl"
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-8"
         >
-          <motion.p variants={fadeUp} className="text-[11px] uppercase tracking-[0.32em] text-orange-400/80 font-medium mb-6">
-            The innovation black hole
-          </motion.p>
-          <motion.h2
-            variants={fadeUp}
-            data-testid={TID.problemHeadline}
-            className="font-display text-4xl sm:text-5xl lg:text-[64px] font-semibold tracking-[-0.025em] leading-[1.02]"
-          >
-            <span className="text-white">$2.7 trillion</span>
-            <span className="text-zinc-500"> is spent on R&D globally every year.</span>
-            <br />
-            <span className="text-zinc-500">Most of it vanishes into a </span>
-            <span className="relative inline-block">
-              <span className="text-gradient-accent">black hole</span>
-              <svg className="absolute -bottom-1 left-0 w-full" height="8" viewBox="0 0 200 8" preserveAspectRatio="none">
-                <path d="M2 5 Q 50 1, 100 4 T 198 3" stroke="url(#gx)" strokeWidth="2" fill="none" strokeLinecap="round" />
-                <defs>
-                  <linearGradient id="gx" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#22d3ee" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
-            <span className="text-zinc-500">.</span>
-          </motion.h2>
+          The Innovation Black Hole · 01
+        </motion.p>
 
-          <motion.p variants={fadeUp} className="mt-8 text-zinc-400 text-lg max-w-2xl leading-relaxed">
-            Today's innovation ecosystem is broken into silos.
-          </motion.p>
-        </motion.div>
+        {/* Scroll-revealed headline */}
+        <h2
+          data-testid={TID.problemHeadline}
+          className="font-display max-w-5xl text-4xl sm:text-5xl lg:text-[64px] xl:text-[76px] font-medium tracking-[-0.03em] leading-[1.02]"
+        >
+          {headlineWords.map((w, i) => {
+            const t = 0.05 + i * 0.13;
+            const range = [t, Math.min(1, t + 0.22)];
+            return (
+              <React.Fragment key={i}>
+                {w.br && <br />}
+                <RevealWord
+                  progress={scrollYProgress}
+                  range={range}
+                  color={w.accent ? '#ee692e' : '#ffffff'}
+                  dimColor={w.accent ? '#3a2a20' : '#312f2d'}
+                  bold={w.b}
+                >
+                  {w.t}
+                </RevealWord>
+                {i < headlineWords.length - 1 && ' '}
+              </React.Fragment>
+            );
+          })}
+        </h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="mt-10 text-bone/60 text-lg max-w-2xl leading-relaxed"
+        >
+          Today's innovation ecosystem is broken into <span className="text-white font-medium">silos</span>.
+          Each tool tracks one slice — and misses the rest.
+        </motion.p>
 
         {/* Silo grid */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden">
           {silos.map((s, i) => (
             <motion.div
               key={s.title}
-              custom={i}
-              initial="hidden"
-              whileInView="show"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              variants={fadeUp}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur p-7 transition hover:border-white/20"
+              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -2 }}
+              className="group relative bg-ink/80 p-8 lg:p-10 transition-colors duration-500 hover:bg-ink/40"
             >
-              <div className="absolute -top-20 -right-20 h-44 w-44 rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"
-                   style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%)' }} />
-              <div className="flex items-start gap-5 relative">
-                <div className={`h-12 w-12 shrink-0 grid place-items-center rounded-xl border border-white/10 bg-gradient-to-br ${s.tint} text-black/80`}>
-                  <s.Icon size={22} />
+              <div className="flex items-start gap-5">
+                <div className="h-11 w-11 shrink-0 grid place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02] text-bone group-hover:text-orange transition-colors">
+                  <s.Icon size={20} />
                 </div>
-                <div>
-                  <div className="font-display text-2xl font-medium tracking-tight">{s.title}</div>
-                  <p className="mt-1.5 text-zinc-400 leading-relaxed">{s.body}</p>
+                <div className="flex-1 min-w-0">
+                  <div className="font-display text-2xl lg:text-3xl font-medium tracking-tight text-white">
+                    {s.title}
+                  </div>
+                  <p className="mt-2.5 text-bone/55 leading-relaxed text-[15px]">
+                    <span className="text-white">{s.tracks}</span> — {s.miss}
+                  </p>
                 </div>
+                <span className="text-[10px] font-mono text-bone/30 tracking-[0.2em]">
+                  0{i + 1}
+                </span>
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Closing manifesto */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 max-w-3xl"
+          className="mt-20 max-w-3xl"
         >
-          <p className="text-zinc-300 text-xl lg:text-2xl leading-relaxed font-light">
-            Contributors go unrecognized. Funding has no accountability. Brilliant projects die in silence —
+          <p className="text-bone/75 text-xl lg:text-2xl leading-[1.5] font-light">
+            Contributors go <span className="text-white font-medium">unrecognized</span>. Funding has{' '}
+            <span className="text-white font-medium">no accountability</span>. Brilliant projects die in silence —
             <span className="text-white"> not because they lacked talent, but because they lacked coordination.</span>
           </p>
-          <p className="mt-8 font-display text-2xl lg:text-3xl tracking-tight text-gradient">
-            What if one platform could see the entire story of an innovation — from the first spark to the final reward?
+          <p className="mt-10 font-display text-2xl lg:text-[34px] tracking-tight text-bone leading-tight">
+            What if one platform could see the <span className="text-accent-warm font-medium">entire story of an innovation</span> — from the first spark to the final reward?
           </p>
         </motion.div>
       </div>

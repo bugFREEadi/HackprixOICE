@@ -22,22 +22,22 @@ const logos = [
 
 export default function LogoMarquee() {
   return (
-    <section data-testid={TID.techMarquee} id="tech" className="relative py-14 border-y border-white/5 bg-black/40">
+    <section data-testid={TID.techMarquee} id="tech" className="relative py-16 border-y border-white/[0.05] bg-ink/40">
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center text-[11px] uppercase tracking-[0.32em] text-zinc-500 mb-8"
+        className="text-center text-[11px] uppercase tracking-[0.32em] text-bone/40 mb-9"
       >
-        Built on the rails the next billion users will run on
+        Built on rails the next billion users will run on
       </motion.p>
       <div className="fade-x-mask">
-        <Marquee gradient={false} speed={32} pauseOnHover>
+        <Marquee gradient={false} speed={28} pauseOnHover>
           {[...logos, ...logos].map((l, i) => {
             const { Icon, label } = l;
             return (
-              <div key={i} className="flex items-center gap-3 mx-10 text-zinc-500 hover:text-white transition-colors group">
-                <Icon className="h-6 w-6 group-hover:text-cyan-300 transition-colors" />
+              <div key={i} className="flex items-center gap-3 mx-12 text-bone/35 hover:text-white transition-colors duration-500 group">
+                <Icon className="h-6 w-6 group-hover:text-orange transition-colors" />
                 <span className="font-display text-base tracking-tight">{label}</span>
               </div>
             );

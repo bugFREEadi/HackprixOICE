@@ -2,115 +2,109 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Lock, IdCard, GitBranch } from 'lucide-react';
 import { TID } from '@/constants/testIds';
+import { IsoConverge } from '@/components/IsometricVisual';
 
 const pillars = [
   {
-    id: TID.pillarGemini,
-    Icon: Brain,
-    tag: 'Intelligence',
-    title: 'Gemini AI',
-    body: 'evaluates contributions, predicts timelines, and detects missing talent across your team.',
-    accent: 'from-violet-500/80 to-fuchsia-500/40',
-    ring: 'ring-violet-500/30',
-    glow: 'rgba(139,92,246,0.35)',
+    id: TID.pillarGemini, Icon: Brain, num: '01', tag: 'Intelligence', title: 'Gemini AI',
+    body: 'Evaluates contributions across 5 dimensions, predicts timelines, and detects missing talent.',
+    accent: '#eb8299',
   },
   {
-    id: TID.pillarEscrow,
-    Icon: Lock,
-    tag: 'Trust',
-    title: 'Ethereum Escrow',
-    body: 'locks, releases, and distributes funds based on verified milestones — not promises.',
-    accent: 'from-cyan-400/80 to-blue-500/40',
-    ring: 'ring-cyan-500/30',
-    glow: 'rgba(34,211,238,0.35)',
+    id: TID.pillarEscrow, Icon: Lock, num: '02', tag: 'Trust', title: 'Ethereum Escrow',
+    body: 'Locks, releases, and distributes funds based on verified milestones — not promises.',
+    accent: '#ee692e',
   },
   {
-    id: TID.pillarPassport,
-    Icon: IdCard,
-    tag: 'Story',
-    title: 'Innovation Passports',
-    body: 'a living dashboard that tells the complete story of any project — built in.',
-    accent: 'from-amber-400/80 to-orange-500/40',
-    ring: 'ring-amber-500/30',
-    glow: 'rgba(245,158,11,0.35)',
+    id: TID.pillarPassport, Icon: IdCard, num: '03', tag: 'Story', title: 'Innovation Passports',
+    body: 'A living dashboard that tells the complete story of any project. Built in.',
+    accent: '#ded2c4',
   },
   {
-    id: TID.pillarDna,
-    Icon: GitBranch,
-    tag: 'Visualization',
-    title: 'DNA Graphs',
-    body: 'visual lifecycle maps that evolve as your innovation grows. Zoomable. Interactive.',
-    accent: 'from-emerald-400/80 to-teal-500/40',
-    ring: 'ring-emerald-500/30',
-    glow: 'rgba(16,185,129,0.35)',
+    id: TID.pillarDna, Icon: GitBranch, num: '04', tag: 'Visualization', title: 'DNA Graphs',
+    body: 'Visual lifecycle maps that evolve as your innovation grows. Zoomable. Interactive.',
+    accent: '#85be9d',
   },
 ];
 
 export default function Solution() {
   return (
-    <section id="solution" data-testid={TID.solutionSection} className="relative py-24 lg:py-32">
+    <section id="solution" data-testid={TID.solutionSection} className="relative py-28 lg:py-36">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          {/* Left — copy */}
+          <div className="lg:col-span-7">
+            <motion.p
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-7"
+            >
+              Meet OICE · 02
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="font-display text-4xl sm:text-5xl lg:text-[64px] font-medium tracking-[-0.03em] leading-[1.02] text-white"
+            >
+              One platform.
+              <br />
+              <span className="text-bone/55">Full lifecycle.</span>
+              <br />
+              <span className="text-accent-warm font-semibold">Zero trust assumptions.</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ delay: 0.12 }}
+              className="mt-8 text-bone/65 text-lg leading-[1.65] max-w-xl"
+            >
+              OICE is the world's first decentralized innovation coordination protocol.
+              <br className="hidden sm:block" />
+              Every contribution is <span className="text-white font-medium">scored</span>.
+              Every milestone is <span className="text-white font-medium">verified</span>.
+              Every reward is <span className="text-white font-medium">earned</span>.
+            </motion.p>
+          </div>
+
+          {/* Right — isometric wireframe visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-[11px] uppercase tracking-[0.32em] text-cyan-300/80 font-medium mb-6"
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 relative"
           >
-            Meet OICE
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.08 }}
-            className="font-display text-4xl sm:text-5xl lg:text-[64px] font-semibold tracking-[-0.025em] leading-[1.02]"
-          >
-            One platform. <span className="text-zinc-500">Full lifecycle.</span>
-            <br /><span className="text-gradient-accent">Zero trust assumptions.</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="mt-7 text-zinc-400 text-lg leading-relaxed max-w-2xl"
-          >
-            OICE is the world's first decentralized innovation coordination protocol. Every contribution
-            is scored. Every milestone is verified. Every reward is earned.
-          </motion.p>
+            <div className="absolute inset-0 rounded-3xl bg-orange/[0.04] blur-3xl" />
+            <div className="relative aspect-square w-full">
+              <IsoConverge className="w-full h-full" />
+            </div>
+          </motion.div>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+        {/* Four pillars */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden">
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
               data-testid={p.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
+              viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.65, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -4 }}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/60 backdrop-blur-xl p-8 lg:p-10"
+              whileHover={{ y: -3 }}
+              className="group relative bg-ink/80 p-7 lg:p-8 transition-colors duration-500 hover:bg-ink/40 min-h-[260px] flex flex-col"
             >
-              {/* Hover glow */}
-              <div
-                className="absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: `radial-gradient(600px circle at 50% 0%, ${p.glow}, transparent 50%)` }}
-              />
-              <div className="relative">
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${p.accent} ring-1 ${p.ring}`}>
-                  <p.Icon size={22} className="text-white" strokeWidth={2} />
+              <div className="flex items-start justify-between">
+                <div className="h-11 w-11 grid place-items-center rounded-xl border border-white/[0.08] bg-white/[0.02]"
+                     style={{ color: p.accent }}>
+                  <p.Icon size={20} strokeWidth={1.8} />
                 </div>
-                <div className="mt-6 flex items-center gap-3">
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-zinc-500">{p.tag}</span>
-                  <span className="h-px w-8 bg-white/10" />
-                </div>
-                <h3 className="font-display mt-2 text-2xl lg:text-3xl font-medium tracking-tight">{p.title}</h3>
-                <p className="mt-3 text-zinc-400 text-[15px] leading-relaxed max-w-md">{p.body}</p>
+                <span className="text-[10px] font-mono text-bone/30 tracking-[0.22em]">{p.num}</span>
               </div>
-              <div className="pointer-events-none absolute -bottom-32 -right-24 h-64 w-64 rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"
-                   style={{ background: p.glow }} />
+              <div className="mt-auto pt-10">
+                <div className="text-[10px] uppercase tracking-[0.22em] text-bone/45 mb-2">{p.tag}</div>
+                <h3 className="font-display text-2xl font-medium tracking-tight text-white">{p.title}</h3>
+                <p className="mt-3 text-bone/55 text-[14px] leading-relaxed">{p.body}</p>
+              </div>
+              <div className="pointer-events-none absolute -bottom-20 -right-12 h-40 w-40 rounded-full blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700"
+                   style={{ background: p.accent }} />
             </motion.div>
           ))}
         </div>
