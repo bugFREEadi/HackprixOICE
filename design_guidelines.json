@@ -1,0 +1,110 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) crossed with Dark Web3/AI Tech",
+  "vibe": "Premium, developer-focused, authoritative, futuristic, Stripe/Linear/Vercel aesthetic.",
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "h1": "text-5xl sm:text-6xl lg:text-7xl tracking-tighter font-bold",
+    "h2": "text-3xl sm:text-4xl lg:text-5xl tracking-tight font-semibold",
+    "h3": "text-xl sm:text-2xl tracking-tight font-medium",
+    "body": "text-base lg:text-lg leading-relaxed text-zinc-400",
+    "label": "uppercase text-xs tracking-[0.2em] font-bold text-zinc-500"
+  },
+  "colors": {
+    "background": "#050505",
+    "surface": "#0A0A0A",
+    "surface_glass": "bg-white/5 backdrop-blur-2xl",
+    "primary_text": "#FFFFFF",
+    "secondary_text": "#A1A1AA",
+    "accent_cyan": "#06B6D4",
+    "accent_blue": "#3B82F6",
+    "accent_purple": "#8B5CF6",
+    "gradient_accent": "bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600",
+    "border": "border-white/10"
+  },
+  "layout": {
+    "spacing_scale": "Generous (p-8, p-12, py-24, gap-8)",
+    "container_max_width": "max-w-7xl mx-auto px-6 lg:px-8",
+    "grid_system": {
+      "bento_features": "grid-cols-1 md:grid-cols-12 gap-6",
+      "bento_cards": "1px border border-white/10 bg-white/[0.02] backdrop-blur-xl rounded-2xl overflow-hidden"
+    }
+  },
+  "animations": {
+    "hero": "Maximalist Framer Motion entry, animated React Flow DNA graph, glowing background gradient spheres.",
+    "scroll_reveals": "Staggered text reveals, opacity and subtle y-axis translation.",
+    "micro_interactions": "Magnetic buttons, 'Tracing Beam' glowing border effect on hover for feature cards."
+  },
+  "sections": [
+    {
+      "name": "Header",
+      "style": "Sticky, glassmorphism (bg-black/60 backdrop-blur-xl), border-b border-white/10. Logo, Nav Links, Primary CTA ('Launch App').",
+      "instructions": "Ensure z-50 and proper padding-top on the body to avoid overlap."
+    },
+    {
+      "name": "Hero",
+      "style": "Dark void background with deep glowing cyan/purple orbs. Large H1 text + sub-headline. Dual CTAs (Launch App, Watch 90-sec Demo). Visual: React Flow integrated representing the 'Innovation DNA' (Innovation->Contributions->Funding->Milestones->Rewards).",
+      "components": "framer-motion for text, reactflow / @xyflow/react for the animated graph."
+    },
+    {
+      "name": "Tech Stack / Logos Row",
+      "style": "react-fast-marquee. Very slow smooth drift. High contrast tech logos representing the stack (React, TS, Tailwind, Gemini, Solidity, Base, Prisma, Postgres, IPFS)."
+    },
+    {
+      "name": "Problem (The Innovation Black Hole)",
+      "style": "Aggressive typography. Red/Orange subtle glow to represent the 'black hole' where $2.7T R&D vanishes."
+    },
+    {
+      "name": "Solution (Meet OICE)",
+      "style": "4 Pillars: Gemini AI, Ethereum Escrow, Innovation Passports, DNA Graphs. Presented in a 2x2 grid or overlapping bento."
+    },
+    {
+      "name": "How It Works (Timeline)",
+      "style": "8-step vertical timeline with animated connecting line (framer motion draw path on scroll). Steps: Create -> Contribute -> AI Evaluates -> Validate -> Fund -> Hit Milestones -> Distribute Rewards -> Generate Passport."
+    },
+    {
+      "name": "Feature Deep-Dives",
+      "style": "Uneven bento grid. Highlight the AI Contribution Evaluator (5 dimensions), Escrow & Rewards, DNA Graph visualization, and Innovation Passport. Use mock UI components (Shadcn Tabs, Charts, Badges) as 'proof-by-screenshot'.",
+      "components": "Shadcn Tabs, Cards, Badges, Charts."
+    },
+    {
+      "name": "Why Now",
+      "style": "Three converging forces. Clean 3-column layout with glowing icons (lucide-react)."
+    },
+    {
+      "name": "Simulation Engine & Final CTA",
+      "style": "Immersive full-width section. Dark overlay. Glowing 'Run Simulation' magnetic button. Stats counters animating (5 AI dimensions, 5 smart contract fns, 12 lifecycle steps)."
+    },
+    {
+      "name": "Footer",
+      "style": "Comprehensive multi-column footer. Huge 'OICE' text backdrop. Subtle grey links."
+    }
+  ],
+  "image_urls": {
+    "hero_abstract_bg": {
+      "url": "https://images.unsplash.com/photo-1758073519996-6d3c63b4922c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhcmslMjB0ZWNobm9sb2d5JTIwbmV0d29yayUyMGN5YW58ZW58MHx8fHwxNzgxMzQxOTAxfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue glowing dots forming wave patterns - use for background ambience."
+    },
+    "feature_code_snippet": {
+      "url": "https://images.unsplash.com/photo-1759661881353-5b9cc55e1cf4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHw0fHxkZXZlbG9wZXIlMjBjb2RpbmclMjBkYXJrJTIwcm9vbXxlbnwwfHx8fDE3ODEzNDE4OTR8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Code on screen - use inside the 'AI Evaluator' or 'Smart Contract' bento cards as a visual."
+    },
+    "feature_network_map": {
+      "url": "https://images.unsplash.com/photo-1633098096956-afdc8bcc8552?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGRhcmslMjB0ZWNobm9sb2d5JTIwbmV0d29yayUyMGN5YW58ZW58MHx8fHwxNzgxMzQxOTAxfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Close up map of world / network - use for 'Innovation Passport' or 'Simulation Engine' bento cards."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Build the application using React (.jsx/.js files), Tailwind CSS, Framer Motion, and Shadcn UI.",
+    "Do NOT use TypeScript (.tsx). Use standard JavaScript (.jsx) for React components.",
+    "Use pure HTML and Tailwind for complex marketing layouts; use Shadcn for interactive components (Tabs, Accordions, Dialogs).",
+    "For the Tech Stack / Integration logos, install 'react-icons' and use 'react-icons/si' (Simple Icons) such as SiReact, SiTailwindcss, SiEthereum, SiPostgresql.",
+    "Install and use 'reactflow' or '@xyflow/react' for the animated DNA graph in the Hero section. Make nodes dark with glowing cyan/purple borders.",
+    "Follow the 'Dark Mode Swiss + Electric Tech' archetype. Default background must be #050505.",
+    "Install Google Fonts 'Outfit' for headings and 'Manrope' for body text. Do not use generic Inter for headings.",
+    "Use 'framer-motion' heavily. Sections should fade/slide in. Buttons should have hover scale/magnetic effects.",
+    "All interactive elements MUST have a data-testid attribute in kebab-case (e.g., data-testid='launch-app-button').",
+    "Implement routing for 'Launch App' and 'Run Simulation' buttons to a placeholder app dashboard page."
+  ]
+}
