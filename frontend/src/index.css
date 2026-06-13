@@ -80,26 +80,30 @@ html, body {
     background-size: 32px 32px;
 }
 
-/* Hero-only stronger grid — clearly visible, smaller cells */
+/* Hero-only stronger grid — clearly visible, slightly subtler */
 .bg-grid-hero {
     background-image:
-        linear-gradient(to right,  rgba(255,255,255,0.24) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.24) 1px, transparent 1px);
-    background-size: 56px 56px;
+        linear-gradient(to right,  rgba(255,255,255,0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.18) 1px, transparent 1px);
+    background-size: 72px 72px;
     background-position: center top;
 }
 
-/* Hero grid mask — fades top and bottom, contained */
+/* Hero grid mask — gradual fade top + bottom */
 .mask-grid-hero {
     mask-image: linear-gradient(to bottom,
         transparent 0%,
-        black 12%,
-        black 78%,
+        rgba(0,0,0,0.4) 8%,
+        black 24%,
+        black 64%,
+        rgba(0,0,0,0.4) 86%,
         transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom,
         transparent 0%,
-        black 12%,
-        black 78%,
+        rgba(0,0,0,0.4) 8%,
+        black 24%,
+        black 64%,
+        rgba(0,0,0,0.4) 86%,
         transparent 100%);
 }
 

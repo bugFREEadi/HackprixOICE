@@ -335,8 +335,8 @@ export default function Features() {
             transition={{ duration: 0.7, delay: 0.16 }}
             className="col-span-12 lg:col-span-8 relative overflow-hidden rounded-3xl border border-white/[0.08] bg-ink/70 backdrop-blur-xl p-6 lg:p-8"
           >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="md:max-w-md">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-7">
+              <div className="lg:max-w-sm shrink-0">
                 <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-green">
                   <Gauge size={12} /> Readiness Score
                 </div>
@@ -346,27 +346,29 @@ export default function Features() {
                   <span className="text-white font-medium"> Stop guessing. Start measuring.</span>
                 </p>
               </div>
-              <div className="grid grid-cols-5 gap-2 md:gap-3 w-full md:w-auto">
-                {['Team','Funding','Contribs','Milestones','Docs'].map((label, i) => {
-                  const vals = [86, 72, 91, 64, 58];
-                  const colors = ['#ee692e','#f08a5d','#eb8299','#85be9d','#ded2c4'];
-                  return (
-                    <div key={label} className="text-center">
-                      <div className="relative h-24 w-10 mx-auto rounded-md bg-white/[0.02] border border-white/[0.05] overflow-hidden">
-                        <motion.div
-                          initial={{ height: 0 }}
-                          whileInView={{ height: `${vals[i]}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: i * 0.1, ease: 'easeOut' }}
-                          className="absolute bottom-0 left-0 right-0"
-                          style={{ background: colors[i] }}
-                        />
-                      </div>
-                      <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-bone/40">{label}</div>
-                      <div className="text-[11px] font-mono text-bone/70">{vals[i]}</div>
+              <div className="w-full lg:flex-1 lg:max-w-md space-y-3">
+                {[
+                  { label: 'Team',         value: 86, color: '#ee692e' },
+                  { label: 'Funding',      value: 72, color: '#f08a5d' },
+                  { label: 'Contributions',value: 91, color: '#eb8299' },
+                  { label: 'Milestones',   value: 64, color: '#85be9d' },
+                  { label: 'Docs',         value: 58, color: '#ded2c4' },
+                ].map((s, i) => (
+                  <div key={s.label} className="flex items-center gap-3">
+                    <div className="w-24 shrink-0 text-[12px] text-bone/70">{s.label}</div>
+                    <div className="flex-1 h-2 rounded-full bg-white/[0.04] overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${s.value}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.1, delay: i * 0.08, ease: 'easeOut' }}
+                        className="h-full rounded-full"
+                        style={{ background: s.color }}
+                      />
                     </div>
-                  );
-                })}
+                    <div className="w-8 shrink-0 text-right text-[12px] font-mono text-white">{s.value}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>

@@ -36,7 +36,7 @@ export default function Hero() {
           <motion.h1
             variants={item}
             data-testid={TID.heroHeadline}
-            className="font-display mt-8 text-[44px] sm:text-6xl lg:text-7xl xl:text-[92px] font-medium tracking-[-0.035em] leading-[0.96] text-white"
+            className="font-display mt-8 text-[52px] sm:text-7xl lg:text-8xl xl:text-[120px] font-medium tracking-[-0.04em] leading-[0.94] text-white"
           >
             Innovation isn't broken.
             <br />
