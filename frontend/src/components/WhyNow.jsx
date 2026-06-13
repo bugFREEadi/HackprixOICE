@@ -33,8 +33,8 @@ export default function WhyNow() {
     <section id="why" data-testid={TID.whyNowSection} className="relative py-28 lg:py-40 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[11px] uppercase tracking-[0.32em] text-green font-medium mb-7">
-            Why now · 05
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.32em] text-green font-medium mb-7">
+            <span className="h-1.5 w-1.5 rounded-full bg-green" /> Why now · 05
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

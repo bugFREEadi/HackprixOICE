@@ -80,11 +80,11 @@ html, body {
     background-size: 32px 32px;
 }
 
-/* Hero-only stronger grid — visible like Linear / MegaLLM */
+/* Hero-only stronger grid — clearly visible like Linear / MegaLLM */
 .bg-grid-hero {
     background-image:
-        linear-gradient(to right,  rgba(222,210,196,0.32) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(222,210,196,0.32) 1px, transparent 1px);
+        linear-gradient(to right,  rgba(255,255,255,0.28) 1.5px, transparent 1.5px),
+        linear-gradient(to bottom, rgba(255,255,255,0.28) 1.5px, transparent 1.5px);
     background-size: 88px 88px;
     background-position: center top;
 }
@@ -93,13 +93,13 @@ html, body {
 .mask-grid-v {
     mask-image: linear-gradient(to bottom,
         transparent 0%,
-        black 14%,
-        black 80%,
+        black 10%,
+        black 86%,
         transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom,
         transparent 0%,
-        black 14%,
-        black 80%,
+        black 10%,
+        black 86%,
         transparent 100%);
 }
 

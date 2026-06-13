@@ -29,12 +29,12 @@ export default function Footer() {
             </p>
             <div className="mt-7 flex items-center gap-2">
               {[
-                { Icon: Github,  label: 'GitHub' },
-                { Icon: Twitter, label: 'X / Twitter' },
-                { Icon: BookOpen, label: 'Docs' },
+                { Icon: Github,  label: 'GitHub', hoverColor: 'hover:text-green' },
+                { Icon: Twitter, label: 'X / Twitter', hoverColor: 'hover:text-pink' },
+                { Icon: BookOpen, label: 'Docs', hoverColor: 'hover:text-orange' },
               ].map((s) => (
                 <a key={s.label} href="#" aria-label={s.label}
-                   className="h-9 w-9 grid place-items-center rounded-lg border border-white/[0.08] text-bone/55 hover:text-white hover:bg-white/[0.04] transition-colors">
+                   className={`h-9 w-9 grid place-items-center rounded-lg border border-white/[0.08] text-bone/55 ${s.hoverColor} hover:bg-white/[0.04] transition-colors`}>
                   <s.Icon size={16} />
                 </a>
               ))}

@@ -36,9 +36,9 @@ export default function Solution() {
           <div className="lg:col-span-7">
             <motion.p
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-              className="text-[11px] uppercase tracking-[0.32em] text-pink font-medium mb-7"
+              className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.32em] text-pink font-medium mb-7"
             >
-              Meet OICE · 02
+              <span className="h-1.5 w-1.5 rounded-full bg-pink" /> Meet OICE · 02
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

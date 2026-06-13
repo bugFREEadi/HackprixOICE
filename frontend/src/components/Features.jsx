@@ -185,8 +185,8 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                    className="text-[11px] uppercase tracking-[0.32em] text-bone font-medium mb-7">
-            Feature deep-dives · 04
+                    className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.32em] text-bone font-medium mb-7">
+            <span className="h-1.5 w-1.5 rounded-full bg-bone" /> Feature deep-dives · 04
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

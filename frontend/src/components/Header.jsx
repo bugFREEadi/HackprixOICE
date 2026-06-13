@@ -52,7 +52,7 @@ export default function Header() {
               <a key={l.id} href={l.href} data-testid={l.id}
                  className="relative px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors group">
                 {l.label}
-                <span className="absolute inset-x-3 -bottom-px h-px bg-orange/60 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="absolute inset-x-3 -bottom-px h-px bg-pink/60 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
           </nav>

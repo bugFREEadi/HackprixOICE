@@ -13,17 +13,17 @@ export default function Hero() {
   return (
     <section data-testid={TID.hero} className="relative pt-36 lg:pt-48 pb-20 lg:pb-28 overflow-hidden">
       {/* Premium grid background — Linear / Stripe style */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-grid-hero mask-grid-v" />
-        {/* warm radial glow — subtle so the grid stays the hero */}
-        <div className="absolute inset-x-0 top-1/3 -translate-y-1/2 h-[700px] mask-grid-radial pointer-events-none">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[520px] w-[720px] rounded-full blur-[180px] bg-orange/[0.07] breathe" />
-          <div className="absolute left-[28%] top-[34%] h-[320px] w-[320px] rounded-full blur-[140px] bg-pink/[0.05] breathe" style={{ animationDelay: '-3s' }} />
-          <div className="absolute right-[26%] bottom-[22%] h-[280px] w-[280px] rounded-full blur-[120px] bg-green/[0.05] breathe" style={{ animationDelay: '-1.5s' }} />
+        {/* warm radial glow — pushed below center so the grid stays the hero feature */}
+        <div className="absolute inset-x-0 bottom-0 h-[380px] mask-grid-radial pointer-events-none overflow-hidden">
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 h-[320px] w-[620px] rounded-full blur-[180px] bg-orange/[0.08] breathe" />
+          <div className="absolute left-[20%] bottom-[10%] h-[220px] w-[220px] rounded-full blur-[140px] bg-pink/[0.06] breathe" style={{ animationDelay: '-3s' }} />
+          <div className="absolute right-[20%] bottom-[12%] h-[220px] w-[220px] rounded-full blur-[120px] bg-green/[0.06] breathe" style={{ animationDelay: '-1.5s' }} />
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-5xl mx-auto text-center">
           <motion.div variants={item} className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] uppercase tracking-[0.22em] text-bone/80 backdrop-blur">
             <span className="relative flex h-1.5 w-1.5">
@@ -69,12 +69,12 @@ export default function Hero() {
             </MagneticButton>
           </motion.div>
 
-          <motion.div variants={item} className="mt-6 flex items-center justify-center gap-4 text-xs text-bone/45">
-            <span>No signup required</span>
+          <motion.div variants={item} className="mt-6 flex items-center justify-center gap-4 text-xs text-bone/55">
+            <span className="inline-flex items-center gap-1.5"><span className="h-1 w-1 rounded-full bg-green" /> No signup required</span>
             <span className="h-1 w-1 rounded-full bg-bone/30" />
-            <span>Live on Base Sepolia</span>
+            <span className="inline-flex items-center gap-1.5"><span className="h-1 w-1 rounded-full bg-pink" /> Live on Base Sepolia</span>
             <span className="h-1 w-1 rounded-full bg-bone/30" />
-            <span>Gemini-powered</span>
+            <span className="inline-flex items-center gap-1.5"><span className="h-1 w-1 rounded-full bg-orange" /> Gemini-powered</span>
           </motion.div>
         </motion.div>
 

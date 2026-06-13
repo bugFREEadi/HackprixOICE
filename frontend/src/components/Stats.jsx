@@ -3,11 +3,11 @@ import { motion, useInView } from 'framer-motion';
 import { TID } from '@/constants/testIds';
 
 const stats = [
-  { key: 'ai-dimensions',   label: 'AI evaluation dimensions',    value: 5,  suffix: '',     color: '#ee692e' },
+  { key: 'ai-dimensions',   label: 'AI evaluation dimensions',    value: 5,  suffix: '',     color: '#85be9d' },
   { key: 'contract-fns',    label: 'Smart contract functions',    value: 5,  suffix: ' core',color: '#ded2c4' },
   { key: 'lifecycle-steps', label: 'Lifecycle steps tracked',     value: 12, suffix: '',     color: '#eb8299' },
-  { key: 'sim-runtime',     label: 'Simulation runtime',          value: 90, suffix: 's',    color: '#85be9d' },
-  { key: 'contrib-types',   label: 'Contribution types supported',value: 6,  suffix: '',     color: '#ee692e' },
+  { key: 'sim-runtime',     label: 'Simulation runtime',          value: 90, suffix: 's',    color: '#ee692e' },
+  { key: 'contrib-types',   label: 'Contribution types supported',value: 6,  suffix: '',     color: '#85be9d' },
   { key: 'readiness',       label: 'Readiness score inputs',      value: 5,  suffix: '',     color: '#eb8299' },
 ];
 
@@ -39,7 +39,7 @@ export default function Stats() {
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] uppercase tracking-[0.32em] text-pink font-medium mb-7">Built for impact · 06</p>
+          <p className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.32em] text-pink font-medium mb-7"><span className="h-1.5 w-1.5 rounded-full bg-pink" /> Built for impact · 06</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] text-white leading-tight">
             Numbers that make the system <span className="text-accent-warm font-semibold">legible.</span>
           </h2>

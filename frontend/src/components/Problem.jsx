@@ -42,14 +42,14 @@ export default function Problem() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-8"
-        >
-          The Innovation Black Hole · 01
-        </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2.5 text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-8"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-orange" /> The Innovation Black Hole · 01
+          </motion.p>
 
         {/* Scroll-revealed headline */}
         <h2
