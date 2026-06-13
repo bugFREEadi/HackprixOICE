@@ -25,7 +25,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                    className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-7">
+                    className="text-[11px] uppercase tracking-[0.32em] text-green font-medium mb-7">
             From idea to impact · 03
           </motion.p>
           <motion.h2

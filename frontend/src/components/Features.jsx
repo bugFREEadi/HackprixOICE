@@ -185,7 +185,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                    className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-7">
+                    className="text-[11px] uppercase tracking-[0.32em] text-bone font-medium mb-7">
             Feature deep-dives · 04
           </motion.p>
           <motion.h2

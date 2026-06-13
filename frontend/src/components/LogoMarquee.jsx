@@ -27,7 +27,7 @@ export default function LogoMarquee() {
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center text-[11px] uppercase tracking-[0.32em] text-bone/40 mb-9"
+        className="text-center text-[11px] uppercase tracking-[0.32em] text-pink/70 mb-9"
       >
         Built on rails the next billion users will run on
       </motion.p>
@@ -37,7 +37,7 @@ export default function LogoMarquee() {
             const { Icon, label } = l;
             return (
               <div key={i} className="flex items-center gap-3 mx-12 text-bone/35 hover:text-white transition-colors duration-500 group">
-                <Icon className="h-6 w-6 group-hover:text-orange transition-colors" />
+                <Icon className="h-6 w-6 group-hover:text-green transition-colors" />
                 <span className="font-display text-base tracking-tight">{label}</span>
               </div>
             );

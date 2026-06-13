@@ -67,30 +67,39 @@ html, body {
 /* ===== Premium grid backgrounds (Linear / Stripe style) ===== */
 .bg-grid-premium {
     background-image:
-        linear-gradient(to right,  rgba(222,210,196,0.085) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(222,210,196,0.085) 1px, transparent 1px);
+        linear-gradient(to right,  rgba(222,210,196,0.11) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(222,210,196,0.11) 1px, transparent 1px);
     background-size: 64px 64px;
     background-position: center top;
 }
 
 .bg-grid-fine {
     background-image:
-        linear-gradient(to right,  rgba(222,210,196,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(222,210,196,0.05) 1px, transparent 1px);
+        linear-gradient(to right,  rgba(222,210,196,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(222,210,196,0.06) 1px, transparent 1px);
     background-size: 32px 32px;
+}
+
+/* Hero-only stronger grid — visible like Linear / MegaLLM */
+.bg-grid-hero {
+    background-image:
+        linear-gradient(to right,  rgba(222,210,196,0.32) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(222,210,196,0.32) 1px, transparent 1px);
+    background-size: 88px 88px;
+    background-position: center top;
 }
 
 /* Fade grid into darkness top & bottom */
 .mask-grid-v {
     mask-image: linear-gradient(to bottom,
         transparent 0%,
-        black 18%,
-        black 78%,
+        black 14%,
+        black 80%,
         transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom,
         transparent 0%,
-        black 18%,
-        black 78%,
+        black 14%,
+        black 80%,
         transparent 100%);
 }
 

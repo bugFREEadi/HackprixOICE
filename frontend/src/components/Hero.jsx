@@ -14,12 +14,12 @@ export default function Hero() {
     <section data-testid={TID.hero} className="relative pt-36 lg:pt-48 pb-20 lg:pb-28 overflow-hidden">
       {/* Premium grid background — Linear / Stripe style */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-grid-premium mask-grid-v opacity-90" />
-        {/* warm radial glow */}
-        <div className="absolute inset-x-0 top-1/3 -translate-y-1/2 h-[700px] mask-grid-radial">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[560px] w-[760px] rounded-full blur-[180px] bg-orange/[0.12] breathe" />
-          <div className="absolute left-[30%] top-[30%] h-[360px] w-[360px] rounded-full blur-[140px] bg-pink/[0.07] breathe" style={{ animationDelay: '-3s' }} />
-          <div className="absolute right-[28%] bottom-[20%] h-[300px] w-[300px] rounded-full blur-[120px] bg-green/[0.06] breathe" style={{ animationDelay: '-1.5s' }} />
+        <div className="absolute inset-0 bg-grid-hero mask-grid-v" />
+        {/* warm radial glow — subtle so the grid stays the hero */}
+        <div className="absolute inset-x-0 top-1/3 -translate-y-1/2 h-[700px] mask-grid-radial pointer-events-none">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[520px] w-[720px] rounded-full blur-[180px] bg-orange/[0.07] breathe" />
+          <div className="absolute left-[28%] top-[34%] h-[320px] w-[320px] rounded-full blur-[140px] bg-pink/[0.05] breathe" style={{ animationDelay: '-3s' }} />
+          <div className="absolute right-[26%] bottom-[22%] h-[280px] w-[280px] rounded-full blur-[120px] bg-green/[0.05] breathe" style={{ animationDelay: '-1.5s' }} />
         </div>
       </div>
 

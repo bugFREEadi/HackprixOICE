@@ -39,7 +39,7 @@ export default function Stats() {
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-7">Built for impact · 06</p>
+          <p className="text-[11px] uppercase tracking-[0.32em] text-pink font-medium mb-7">Built for impact · 06</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.025em] text-white leading-tight">
             Numbers that make the system <span className="text-accent-warm font-semibold">legible.</span>
           </h2>

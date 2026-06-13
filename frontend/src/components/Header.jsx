@@ -44,7 +44,7 @@ export default function Header() {
               </div>
             </div>
             <span className="font-display text-[17px] font-semibold tracking-tight">OICE</span>
-            <span className="hidden sm:inline-block ml-1 text-[10px] uppercase tracking-[0.18em] text-zinc-500 font-medium border border-white/10 rounded-full px-2 py-0.5">beta</span>
+            <span className="hidden sm:inline-block ml-1 text-[10px] uppercase tracking-[0.18em] text-green font-medium border border-green/30 bg-green/[0.06] rounded-full px-2 py-0.5">beta</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">

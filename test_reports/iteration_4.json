@@ -1,0 +1,32 @@
+{
+  "summary": "Iteration 4 frontend regression — ALL 9 acceptance criteria PASS (1 with a minor note). Page loads cleanly (0 console / 0 page errors). The previously-broken DNA wheel pass-through (iter 3) is now FIXED — wheel over [data-testid=hero-dna-graph] scrolled the page 600px. IsoCluster card is removed; 3 force cards each render their mini iso-SVG header strip. bg-grid-hero present with rgba(222,210,196,0.32) gradient. All 8 HowItWorks steps resolve. Eyebrow color variety verified across 7 sections (orange/pink/green/bone). Routing for all CTAs and back-links verified. Mobile menu opens at 390px. FinalCTA outer height = 659.5px (target 580–640px) — ~20px above, LOW priority per spec since inner block compactness is the goal.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "FinalCTA",
+        "issue": "Outer section bounding-box height is 659.5px at 1920×1080 — ~20px above the 580–640px target. Inner orange block remains compact. Treating as LOW per spec note (inner-block compactness is what matters).",
+        "selector": "[data-testid=final-cta-section]",
+        "priority": "LOW"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Optional, LOW) Trim FinalCTA outer padding by another ~10–15px (e.g. py-8 lg:py-8) if the strict 580–640px outer-box target matters; otherwise no action needed."
+  ],
+  "critical_code_review_comments": [
+    "Naming inconsistency: review_request listed the hero testid as 'hero' but the actual data-testid in Hero.jsx is 'hero-section' (via TID.hero). All other hero-* testids resolve correctly; recommend the main agent either rename TID.hero → 'hero' or update spec language to 'hero-section'. This was the only ID mismatch.",
+    "WhyNow.jsx no longer uses a .force-card CSS class — the 3 cards are direct children of the grid (.grid.grid-cols-1.md:grid-cols-3). Functionality is correct (3 motion.div cards, each with iso-SVG header strip + lucide icon), but if any downstream test/util still relies on .force-card it will need updating.",
+    "Hero grid is technically present (.bg-grid-hero has the expected linear-gradient and opacity:1), but visually the 88px cells + 0.32 alpha + warm-gradient overlay make the grid almost invisible at the headline area — visible only as faint vertical lines around the DNA-graph zone. If the design intent is 'grid as hero feature', consider either lifting cell alpha to ~0.45 or dimming the radial warm glow behind the headline."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "N/A (skipped per request)", "frontend": "100% (9/9 acceptance criteria met; 1 cosmetic LOW)" },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter 4 verified: (1) 0 console/page errors on /; (2) all key data-testids resolve EXCEPT the spec wrote 'hero' while actual is 'hero-section' — flag only, not a bug; hero-headline/subheadline/launch-app-btn/watch-demo-btn/dna-graph all present; (3) WhyNow: NO IsoCluster (no '04' label in section), 3 cards each with 2 SVGs (iso header strip + lucide icon); (4) bg-grid-hero exists, bgImage starts with 'linear-gradient(to right, rgba(222, 210, 196, 0.32) 1px, ...)'; (5) routing all OK: hero-launch-app-btn→/app, hero-watch-demo-btn→/simulation, final-launch-app-btn→/app, header-launch-app-btn→/app, simulation-run-btn→/simulation, back-to-home-link present on both /app and /simulation and navigates to /; (6) DNA graph: 7 nodes + 9 edges, pane cursor=default, wheel-over-graph scrolled the page 600px (iter-3 fix successful); (7) eyebrow colors: problem=rgb(238,105,46) orange, solution=rgb(235,130,153) pink, how=rgb(133,190,157) green, features=rgb(222,210,196) bone, whynow=rgb(133,190,157) green, stats=rgb(235,130,153) pink, simcta=rgb(222,210,196) bone — matches spec mapping exactly; (8) how-step-1..how-step-8 ALL present after scrolling section into view (iter-3 missing 8 was a viewport/whileInView issue, now resolved); (9) FinalCTA outer height 659.5px (~20px over 640 target, LOW); (10) mobile-menu-toggle at 390px opens drawer with 5 nav links + Launch App CTA.",
+  "rca of the issue": "No critical issues to RCA. FinalCTA overshoot (LOW): outer section uses py-8 lg:py-10 wrappers around an inner block — total computed height 659.5px. To strictly hit 580–640px range, reduce inner block py-12/14/16 by ~20–40px or set outer to py-6 lg:py-8."
+}

@@ -36,7 +36,7 @@ export default function Solution() {
           <div className="lg:col-span-7">
             <motion.p
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-              className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-7"
+              className="text-[11px] uppercase tracking-[0.32em] text-pink font-medium mb-7"
             >
               Meet OICE · 02
             </motion.p>

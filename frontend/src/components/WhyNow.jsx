@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Network, Globe } from 'lucide-react';
 import { TID } from '@/constants/testIds';
-import { IsoCluster, IsoArchAI, IsoArchNetwork, IsoArchGlobe } from '@/components/IsometricVisual';
+import { IsoArchAI, IsoArchNetwork, IsoArchGlobe } from '@/components/IsometricVisual';
 
 const forces = [
   {
@@ -33,7 +33,7 @@ export default function WhyNow() {
     <section id="why" data-testid={TID.whyNowSection} className="relative py-28 lg:py-40 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[11px] uppercase tracking-[0.32em] text-orange font-medium mb-7">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-[11px] uppercase tracking-[0.32em] text-green font-medium mb-7">
             Why now · 05
           </motion.p>
           <motion.h2
@@ -51,22 +51,8 @@ export default function WhyNow() {
           </motion.p>
         </div>
 
-        {/* Isometric cluster visual */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2 }}
-          className="mt-16 w-full"
-        >
-          <div className="relative rounded-3xl border border-white/[0.08] bg-ink/60 overflow-hidden">
-            <div className="absolute inset-0 bg-grid-fine opacity-40" />
-            <IsoCluster className="w-full h-[280px] md:h-[360px] relative" />
-          </div>
-        </motion.div>
-
         {/* Force cards — each has its own isometric mini-architecture */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] border border-white/[0.08] rounded-2xl overflow-hidden">
           {forces.map((f, i) => (
             <motion.div
               key={f.label}
